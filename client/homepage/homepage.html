@@ -1,0 +1,81 @@
+<template name="homepage">
+
+  {{#if isLoggedUser}}
+
+{{> nav}}
+
+<div class="container">
+  <br>
+    <div class="row">
+
+        <div class="col-lg-3 col-md-4 col-sm-4 hidden-xs-down">
+                  <div class="card">
+                    <div class="card-block">
+                      <a href="/{{userID}}">{{userID}}</a>
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="card">
+                    <div class="card-block">
+                      This is some text within a card block.
+                    </div>
+                  </div>
+        </div>
+
+        <div class="col-lg-6 col-md-8 col-sm-8 col-12">
+
+                  <div class="card">
+                    <div class="card-block">
+                      <div class="input-group">
+                        <input id="postTweet" type="text" class="form-control" placeholder="What's up?">
+                        <span class="input-group-btn">
+                          <button class="btn btn-primary" id="postTweetButton" type="button">Tweet</button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <br>
+
+                  {{#each allTweets}}
+                  {{> tweetCard}}
+                  {{/each}}
+        </div>
+
+        <div class="col-lg-3 hidden-md-down">
+
+                  <div class="card">
+                    <div class="card-block">
+                      This is some text within a card block.
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="card">
+                    <div class="card-block">
+                      This is some text within a card block.
+                    </div>
+                  </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+  {{else}}
+
+  {{> login}}
+
+  {{/if}}
+</template>
+
+
+<template name="tweetCard">
+  <div class="card">
+    <div class="card-block">
+      <h6>{{userId}}</h6>
+      <h2>{{tweet}}</h2>
+      <h6>{{createdAt}}</h6>
+    </div>
+  </div>
+</template>
